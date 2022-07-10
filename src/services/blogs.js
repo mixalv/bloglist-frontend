@@ -42,11 +42,26 @@ const deleteBlog = async (id) => {
   return response.data
 }
 
+const getBlog = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}`)
+  return response.data
+}
+
+const addComment = async( id, comment) => {
+  const commentBody = {
+    content: comment
+  }
+  const response = await axios.post(`${baseUrl}/${id}/comments`, commentBody)
+  return response.data
+}
+
 const forExport = {
   getAll,
   createNewBlog,
   updateBlog,
-  deleteBlog
+  deleteBlog,
+  getBlog,
+  addComment
 }
 
 export default forExport
